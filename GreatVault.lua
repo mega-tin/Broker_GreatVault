@@ -1,3 +1,4 @@
+local _, private = ...
 local _
 local _G = _G
 
@@ -58,7 +59,21 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 
 
 		Link, UpgradeLink = C_WeeklyRewards.GetExampleRewardItemHyperlinks(rewardTable[Tier].id);
-		ILvl = GetDetailedItemLevelInfo(Link);
+
+		local ILvlString = "";
+
+		local UpgradeInfo = private.GetUpgradeInfo(Link);
+		if UpgradeInfo then
+			ILvlString = string.format("%s %s/%s, %s->%s", UpgradeInfo.Track, UpgradeInfo.Rank, UpgradeInfo.MaxRank, UpgradeInfo.ILvl, UpgradeInfo.MaxIlvl);
+		else
+			ILvl = GetDetailedItemLevelInfo(Link);
+
+			if Ilvl then
+				ILvlString = string.format("Item Level %d", ILvl);
+			else
+				ILvlString = ("N/A");
+			end
+		end
 
 		-- Color completed lines green
 		if Progress == Threshold then
@@ -73,7 +88,7 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 			if not DifficultyText then
 				DifficultyText = "N/A";
 			end
-		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.MythicPlus then
+		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.Activities then
 			DifficultyText = string.format("+%d", Level)
 		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.RankedPvP then
 			DifficultyText = PVPUtil.GetTierName(Level)
@@ -85,7 +100,7 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 		end
 
 		local LeftText = string.format("Tier %d: %2d/%d", Tier, Progress, Threshold);
-		local RightText = string.format("Item Level %d (%s)", ILvl, DifficultyText);
+		local RightText = string.format("%s (%s)", ILvlString, DifficultyText);
 
 		tooltip:AddDoubleLine(LeftText, RightText, r, g, b, r, g, b);
 	end
@@ -110,13 +125,13 @@ GreatVault.AddKeystoneHistory = function(tooltip)
 	if #RunHistory > 0 then
 		table.sort(RunHistory, GreatVault.KeySortFunc);
 
-		-- We only care about the top 10
-		for i = 1, math.min(10, #RunHistory) do
+		-- We only care about the top 8
+		for i = 1, math.min(8, #RunHistory) do
 			local RunInfo = RunHistory[i];
 			table.insert(Levels, RunInfo.level)
 		end
 		local KeyStr = table.concat(Levels, ", ");
-		tooltip:AddLine("(" .. KeyStr .. ")", 1, 1, 1);
+		tooltip:AddLine("Completed Keys: " .. KeyStr, 1, 1, 1);
 	end
 end
 
@@ -146,5 +161,13 @@ GreatVault.OnClick = function(button)
 		WeeklyRewardsFrame:Hide();
 	else
 		WeeklyRewardsFrame:Show();
+	end
+end
+
+-- DEBUG --
+function PrintTable(t)
+	print("Printing", t)
+	for k,v in pairs(t) do
+		print("[", k, "]", " = ", v)
 	end
 end
