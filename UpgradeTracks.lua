@@ -37,10 +37,10 @@ private.UpgradeTable = {
     ["9728"] = {Track = "Hero", Rank = 5, MaxRank = 6, ILvl = 480, MaxIlvl = 483},
     ["9581"] = {Track = "Hero", Rank = 6, MaxRank = 6, ILvl = 483, MaxIlvl = 483},
 
-    ["9573"] = {Track = "Myth", Rank = 1, MaxRank = 6, ILvl = 480, MaxIlvl = 489},
-    ["9574"] = {Track = "Myth", Rank = 2, MaxRank = 6, ILvl = 483, MaxIlvl = 489},
-    ["9575"] = {Track = "Myth", Rank = 3, MaxRank = 6, ILvl = 486, MaxIlvl = 489},
-    ["9576"] = {Track = "Myth", Rank = 4, MaxRank = 6, ILvl = 489, MaxIlvl = 489},
+    ["9573"] = {Track = "Myth", Rank = 1, MaxRank = 4, ILvl = 480, MaxIlvl = 489},
+    ["9574"] = {Track = "Myth", Rank = 2, MaxRank = 4, ILvl = 483, MaxIlvl = 489},
+    ["9575"] = {Track = "Myth", Rank = 3, MaxRank = 4, ILvl = 486, MaxIlvl = 489},
+    ["9576"] = {Track = "Myth", Rank = 4, MaxRank = 4, ILvl = 489, MaxIlvl = 489},
 }
 
 -- Get the Upgrade Track info from an ItemLink

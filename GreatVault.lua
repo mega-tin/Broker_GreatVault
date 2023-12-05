@@ -131,7 +131,8 @@ GreatVault.AddKeystoneHistory = function(tooltip)
 			table.insert(Levels, RunInfo.level)
 		end
 		local KeyStr = table.concat(Levels, ", ");
-		tooltip:AddLine("Completed Keys: " .. KeyStr, 1, 1, 1);
+		KeyStr = string.format("%d Completed Keys: %s", #RunHistory, KeyStr)
+		tooltip:AddLine(KeyStr, 1, 1, 1);
 	end
 end
 
