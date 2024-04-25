@@ -1,0 +1,2 @@
+ignore:
+    - Parser # ignore the scripts to grap and parse the json data
