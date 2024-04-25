@@ -64,7 +64,7 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 
 		local UpgradeInfo = private.GetUpgradeInfo(Link);
 		if UpgradeInfo then
-			ILvlString = string.format("%s %s/%s, %s->%s", UpgradeInfo.Track, UpgradeInfo.Rank, UpgradeInfo.MaxRank, UpgradeInfo.ILvl, UpgradeInfo.MaxIlvl);
+			ILvlString = string.format("%s %s/%s, %s->%s", UpgradeInfo.Track, UpgradeInfo.Rank, UpgradeInfo.MaxRank, UpgradeInfo.Ilvl, UpgradeInfo.MaxIlvl);
 		else
 			ILvl = GetDetailedItemLevelInfo(Link);
 
