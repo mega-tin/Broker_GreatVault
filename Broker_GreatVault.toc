@@ -1,14 +1,15 @@
-## Interface: 100206
+## Interface: 110002
 ## Title: Broker GreatVault
 ## Notes:  A simple data broker display for current Great Vault rewards
 ## Author: Megatin
-## Version: 1.3
+## Version: 1.4
 ## OptionalDeps: LibDataBroker-1.1
 
 
 #@no-lib-strip@
 Libs\LibStub\LibStub.lua
 #@end-no-lib-strip@
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
 Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
 
 GreatVault.lua

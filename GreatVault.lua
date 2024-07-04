@@ -2,7 +2,7 @@ local _, private = ...
 local _
 local _G = _G
 
-LoadAddOn("Blizzard_WeeklyRewards")
+C_AddOns.LoadAddOn("Blizzard_WeeklyRewards")
 
 if _G["WeeklyRewardExpirationWarningDialog"] then
 	_G["WeeklyRewardExpirationWarningDialog"]:SetParent(_G["WeeklyRewardsFrame"])
@@ -29,14 +29,12 @@ function GreatVault:PLAYER_ENTERING_WORLD()
 	-- This feels wrong, but I'm trying to pre-cache item levels so that they are available when the
 	-- use opens the tooltip.
 	local Link, UpgradeLink, ILvl, Rewards;
-	for Activity = 1,3 do
-		Rewards = C_WeeklyRewards.GetActivities(Activity);
-		if Rewards then
-			for Tier = 1,#Rewards do
-				Link, UpgradeLink = C_WeeklyRewards.GetExampleRewardItemHyperlinks(Rewards[Tier].id);
-				if Link then
-					ILvl = GetDetailedItemLevelInfo(Link);
-				end
+	Rewards = C_WeeklyRewards.GetActivities();
+	if Rewards then
+		for Tier = 1,#Rewards do
+			Link, UpgradeLink = C_WeeklyRewards.GetExampleRewardItemHyperlinks(Rewards[Tier].id);
+			if Link then
+				ILvl = C_Item.GetDetailedItemLevelInfo(Link);
 			end
 		end
 	end
@@ -66,7 +64,7 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 		if UpgradeInfo then
 			ILvlString = string.format("%s %s/%s, %s->%s", UpgradeInfo.Track, UpgradeInfo.Rank, UpgradeInfo.MaxRank, UpgradeInfo.Ilvl, UpgradeInfo.MaxIlvl);
 		else
-			ILvl = GetDetailedItemLevelInfo(Link);
+			ILvl = C_Item.GetDetailedItemLevelInfo(Link);
 
 			if Ilvl then
 				ILvlString = string.format("Item Level %d", ILvl);
@@ -86,12 +84,17 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 		if rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.Raid then
 			DifficultyText = DifficultyUtil.GetDifficultyName(Level);
 			if not DifficultyText then
-				DifficultyText = "N/A";
+				DifficultyText = "None";
 			end
 		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.Activities then
-			DifficultyText = string.format("+%d", Level)
-		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.RankedPvP then
-			DifficultyText = PVPUtil.GetTierName(Level)
+			local DifficultyID = C_WeeklyRewards.GetDifficultyIDForActivityTier(rewardTable[Tier].activityTierID)
+			if (DifficultyID == DifficultyUtil.ID.DungeonHeroic) then
+				DifficultyText = "Heroic"
+			else
+				DifficultyText = string.format("+%d", Level)
+			end
+		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.World then
+			DifficultyText = GREAT_VAULT_WORLD_TIER:format(Level)
 		end
 
 		-- This shouldn't happen.
@@ -140,20 +143,20 @@ GreatVault.OnTooltipShow = function(tooltip)
 	tooltip:AddLine("Great Vault")
 	tooltip:AddLine(" ");
 
-	local Raid = C_WeeklyRewards.GetActivities(3);
+	local Raid = C_WeeklyRewards.GetActivities(Enum.WeeklyRewardChestThresholdType.Raid);
 	tooltip:AddLine("Raids");
 	GreatVault.AddGvLines(tooltip, Raid);
 	tooltip:AddLine(" ");
 
-	local MPlus = C_WeeklyRewards.GetActivities(1);
-	tooltip:AddLine("Mythic Dungeons");
-	GreatVault.AddGvLines(tooltip, MPlus);
+	local Dungeons = C_WeeklyRewards.GetActivities(Enum.WeeklyRewardChestThresholdType.Activities);
+	tooltip:AddLine("Dungeons");
+	GreatVault.AddGvLines(tooltip, Dungeons);
 	GreatVault.AddKeystoneHistory(tooltip);
 	tooltip:AddLine(" ");
 
-	local Pvp = C_WeeklyRewards.GetActivities(2);
-	tooltip:AddLine("PvP")
-	GreatVault.AddGvLines(tooltip, Pvp);
+	local World = C_WeeklyRewards.GetActivities(Enum.WeeklyRewardChestThresholdType.World);
+	tooltip:AddLine("World")
+	GreatVault.AddGvLines(tooltip, World);
 	tooltip:AddLine(" ");
 end
 
@@ -166,9 +169,18 @@ GreatVault.OnClick = function(button)
 end
 
 -- DEBUG --
-function PrintTable(t)
-	print("Printing", t)
+function PrintTable(t, level)
+	level = level or 0;
+	local indent = string.rep(" ", 4 * level)
+	if (level == 0) then
+		print("Printing", t)
+	end
 	for k,v in pairs(t) do
-		print("[", k, "]", " = ", v)
+		if (type(v) == "table") then
+			print(string.format("%s[%s] = table", indent, k))
+			PrintTable(v, level + 1)
+		else
+			print(string.format("%s[%s] = %s", indent, k, v))
+		end
 	end
 end
