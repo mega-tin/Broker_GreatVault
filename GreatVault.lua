@@ -49,14 +49,14 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 	table.sort(rewardTable, GreatVault.TierSortFunc);
 
 	-- Add a line for each reward tier for this content
-	for Tier = 1,3 do
-		Threshold = rewardTable[Tier].threshold;
-		Progress = rewardTable[Tier].progress;
-		Level = rewardTable[Tier].level;
+	for Tier, TierTable in ipairs(rewardTable) do
+		Threshold = TierTable.threshold;
+		Progress = TierTable.progress;
+		Level = TierTable.level;
 		Progress = math.min(Progress, Threshold);
 
 
-		Link, UpgradeLink = C_WeeklyRewards.GetExampleRewardItemHyperlinks(rewardTable[Tier].id);
+		Link, UpgradeLink = C_WeeklyRewards.GetExampleRewardItemHyperlinks(TierTable.id);
 
 		local ILvlString = "";
 
@@ -81,20 +81,22 @@ GreatVault.AddGvLines = function(tooltip, rewardTable)
 		end
 
 		-- Build the difficulty tier text based on content type
-		if rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.Raid then
+		if TierTable.type == Enum.WeeklyRewardChestThresholdType.Raid then
 			DifficultyText = DifficultyUtil.GetDifficultyName(Level);
 			if not DifficultyText then
 				DifficultyText = "None";
 			end
-		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.Activities then
-			local DifficultyID = C_WeeklyRewards.GetDifficultyIDForActivityTier(rewardTable[Tier].activityTierID)
+		elseif TierTable.type == Enum.WeeklyRewardChestThresholdType.Activities then
+			local DifficultyID = C_WeeklyRewards.GetDifficultyIDForActivityTier(TierTable.activityTierID)
 			if (DifficultyID == DifficultyUtil.ID.DungeonHeroic) then
 				DifficultyText = "Heroic"
 			else
 				DifficultyText = string.format("+%d", Level)
 			end
-		elseif rewardTable[Tier].type == Enum.WeeklyRewardChestThresholdType.World then
+		elseif TierTable.type == Enum.WeeklyRewardChestThresholdType.World then
 			DifficultyText = GREAT_VAULT_WORLD_TIER:format(Level)
+		elseif TierTable.type == Enum.WeeklyRewardChestThresholdType.RankedPvP then
+			DifficultyText = PVPUtil.GetTierName(Level)
 		end
 
 		-- This shouldn't happen.
@@ -155,9 +157,19 @@ GreatVault.OnTooltipShow = function(tooltip)
 	tooltip:AddLine(" ");
 
 	local World = C_WeeklyRewards.GetActivities(Enum.WeeklyRewardChestThresholdType.World);
-	tooltip:AddLine("World")
-	GreatVault.AddGvLines(tooltip, World);
-	tooltip:AddLine(" ");
+	if (#World > 0) then
+		tooltip:AddLine("World")
+		GreatVault.AddGvLines(tooltip, World);
+		tooltip:AddLine(" ");
+	end
+
+	--End of Dragonflight still has PVP
+	local PVP = C_WeeklyRewards.GetActivities(Enum.WeeklyRewardChestThresholdType.RankedPvP);
+	if (#PVP > 0) then
+		tooltip:AddLine("PVP")
+		GreatVault.AddGvLines(tooltip, PVP);
+		tooltip:AddLine(" ");
+	end
 end
 
 GreatVault.OnClick = function(button)
