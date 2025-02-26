@@ -2,6 +2,56 @@
 local _, private = ...
 
 private.UpgradeTable = {
+    -- Season 25
+    ["11942"] = {Track = "Explorer", Rank = 1, MaxRank = 8, Ilvl = 597, MaxIlvl = 619},
+    ["11943"] = {Track = "Explorer", Rank = 2, MaxRank = 8, Ilvl = 600, MaxIlvl = 619},
+    ["11944"] = {Track = "Explorer", Rank = 3, MaxRank = 8, Ilvl = 603, MaxIlvl = 619},
+    ["11945"] = {Track = "Explorer", Rank = 4, MaxRank = 8, Ilvl = 606, MaxIlvl = 619},
+    ["11946"] = {Track = "Explorer", Rank = 5, MaxRank = 8, Ilvl = 610, MaxIlvl = 619},
+    ["11947"] = {Track = "Explorer", Rank = 6, MaxRank = 8, Ilvl = 613, MaxIlvl = 619},
+    ["11948"] = {Track = "Explorer", Rank = 7, MaxRank = 8, Ilvl = 616, MaxIlvl = 619},
+    ["11949"] = {Track = "Explorer", Rank = 8, MaxRank = 8, Ilvl = 619, MaxIlvl = 619},
+
+    ["11950"] = {Track = "Adventurer", Rank = 8, MaxRank = 8, Ilvl = 632, MaxIlvl = 632},
+    ["11951"] = {Track = "Adventurer", Rank = 1, MaxRank = 8, Ilvl = 610, MaxIlvl = 632},
+    ["11952"] = {Track = "Adventurer", Rank = 2, MaxRank = 8, Ilvl = 613, MaxIlvl = 632},
+    ["11953"] = {Track = "Adventurer", Rank = 3, MaxRank = 8, Ilvl = 616, MaxIlvl = 632},
+    ["11954"] = {Track = "Adventurer", Rank = 4, MaxRank = 8, Ilvl = 619, MaxIlvl = 632},
+    ["11955"] = {Track = "Adventurer", Rank = 5, MaxRank = 8, Ilvl = 623, MaxIlvl = 632},
+    ["11956"] = {Track = "Adventurer", Rank = 6, MaxRank = 8, Ilvl = 626, MaxIlvl = 632},
+    ["11957"] = {Track = "Adventurer", Rank = 7, MaxRank = 8, Ilvl = 629, MaxIlvl = 632},
+
+    ["11969"] = {Track = "Veteran", Rank = 1, MaxRank = 8, Ilvl = 623, MaxIlvl = 645},
+    ["11970"] = {Track = "Veteran", Rank = 2, MaxRank = 8, Ilvl = 626, MaxIlvl = 645},
+    ["11971"] = {Track = "Veteran", Rank = 3, MaxRank = 8, Ilvl = 629, MaxIlvl = 645},
+    ["11972"] = {Track = "Veteran", Rank = 4, MaxRank = 8, Ilvl = 632, MaxIlvl = 645},
+    ["11973"] = {Track = "Veteran", Rank = 5, MaxRank = 8, Ilvl = 636, MaxIlvl = 645},
+    ["11974"] = {Track = "Veteran", Rank = 6, MaxRank = 8, Ilvl = 639, MaxIlvl = 645},
+    ["11975"] = {Track = "Veteran", Rank = 7, MaxRank = 8, Ilvl = 642, MaxIlvl = 645},
+    ["11976"] = {Track = "Veteran", Rank = 8, MaxRank = 8, Ilvl = 645, MaxIlvl = 645},
+
+    ["11977"] = {Track = "Champion", Rank = 1, MaxRank = 8, Ilvl = 636, MaxIlvl = 658},
+    ["11978"] = {Track = "Champion", Rank = 2, MaxRank = 8, Ilvl = 639, MaxIlvl = 658},
+    ["11979"] = {Track = "Champion", Rank = 3, MaxRank = 8, Ilvl = 642, MaxIlvl = 658},
+    ["11980"] = {Track = "Champion", Rank = 4, MaxRank = 8, Ilvl = 645, MaxIlvl = 658},
+    ["11982"] = {Track = "Champion", Rank = 6, MaxRank = 8, Ilvl = 652, MaxIlvl = 658},
+    ["11983"] = {Track = "Champion", Rank = 7, MaxRank = 8, Ilvl = 655, MaxIlvl = 658},
+    ["11984"] = {Track = "Champion", Rank = 8, MaxRank = 8, Ilvl = 658, MaxIlvl = 658},
+
+    ["11985"] = {Track = "Hero", Rank = 1, MaxRank = 6, Ilvl = 649, MaxIlvl = 665},
+    ["11986"] = {Track = "Hero", Rank = 2, MaxRank = 6, Ilvl = 652, MaxIlvl = 665},
+    ["11987"] = {Track = "Hero", Rank = 3, MaxRank = 6, Ilvl = 655, MaxIlvl = 665},
+    ["11988"] = {Track = "Hero", Rank = 4, MaxRank = 6, Ilvl = 658, MaxIlvl = 665},
+    ["11989"] = {Track = "Hero", Rank = 5, MaxRank = 6, Ilvl = 662, MaxIlvl = 665},
+    ["11990"] = {Track = "Hero", Rank = 6, MaxRank = 6, Ilvl = 665, MaxIlvl = 665},
+
+    ["11991"] = {Track = "Myth", Rank = 1, MaxRank = 6, Ilvl = 662, MaxIlvl = 678},
+    ["11992"] = {Track = "Myth", Rank = 2, MaxRank = 6, Ilvl = 665, MaxIlvl = 678},
+    ["11993"] = {Track = "Myth", Rank = 3, MaxRank = 6, Ilvl = 668, MaxIlvl = 678},
+    ["11994"] = {Track = "Myth", Rank = 4, MaxRank = 6, Ilvl = 672, MaxIlvl = 678},
+    ["11995"] = {Track = "Myth", Rank = 5, MaxRank = 6, Ilvl = 675, MaxIlvl = 678},
+    ["11996"] = {Track = "Myth", Rank = 6, MaxRank = 6, Ilvl = 678, MaxIlvl = 678},
+
     -- Season 24
     ["10256"] = {Track = "Hero", Rank = 6, MaxRank = 6, Ilvl = 626, MaxIlvl = 626},
     ["10261"] = {Track = "Hero", Rank = 5, MaxRank = 6, Ilvl = 623, MaxIlvl = 626},
@@ -114,7 +164,6 @@ private.UpgradeTable = {
     ["10416"] = {Track = "Awakened", Rank = 10, MaxRank = 12, Ilvl = 522, MaxIlvl = 528},
     ["10417"] = {Track = "Awakened", Rank = 11, MaxRank = 12, Ilvl = 525, MaxIlvl = 528},
     ["10418"] = {Track = "Awakened", Rank = 12, MaxRank = 12, Ilvl = 528, MaxIlvl = 528},
-
 }
 
 -- Get the Upgrade Track info from an ItemLink
