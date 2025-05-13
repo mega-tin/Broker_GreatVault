@@ -2,6 +2,7 @@
 local _, private = ...
 
 private.UpgradeTable = {
+
     -- Season 25
     ["11942"] = {Track = "Explorer", Rank = 1, MaxRank = 8, Ilvl = 597, MaxIlvl = 619},
     ["11943"] = {Track = "Explorer", Rank = 2, MaxRank = 8, Ilvl = 600, MaxIlvl = 619},
@@ -34,23 +35,28 @@ private.UpgradeTable = {
     ["11978"] = {Track = "Champion", Rank = 2, MaxRank = 8, Ilvl = 639, MaxIlvl = 658},
     ["11979"] = {Track = "Champion", Rank = 3, MaxRank = 8, Ilvl = 642, MaxIlvl = 658},
     ["11980"] = {Track = "Champion", Rank = 4, MaxRank = 8, Ilvl = 645, MaxIlvl = 658},
+    ["11981"] = {Track = "Champion", Rank = 5, MaxRank = 8, Ilvl = 649, MaxIlvl = 658},
     ["11982"] = {Track = "Champion", Rank = 6, MaxRank = 8, Ilvl = 652, MaxIlvl = 658},
     ["11983"] = {Track = "Champion", Rank = 7, MaxRank = 8, Ilvl = 655, MaxIlvl = 658},
     ["11984"] = {Track = "Champion", Rank = 8, MaxRank = 8, Ilvl = 658, MaxIlvl = 658},
 
-    ["11985"] = {Track = "Hero", Rank = 1, MaxRank = 6, Ilvl = 649, MaxIlvl = 665},
-    ["11986"] = {Track = "Hero", Rank = 2, MaxRank = 6, Ilvl = 652, MaxIlvl = 665},
-    ["11987"] = {Track = "Hero", Rank = 3, MaxRank = 6, Ilvl = 655, MaxIlvl = 665},
-    ["11988"] = {Track = "Hero", Rank = 4, MaxRank = 6, Ilvl = 658, MaxIlvl = 665},
-    ["11989"] = {Track = "Hero", Rank = 5, MaxRank = 6, Ilvl = 662, MaxIlvl = 665},
-    ["11990"] = {Track = "Hero", Rank = 6, MaxRank = 6, Ilvl = 665, MaxIlvl = 665},
+    ["11985"] = {Track = "Hero", Rank = 1, MaxRank = 8, Ilvl = 649, MaxIlvl = 671},
+    ["11986"] = {Track = "Hero", Rank = 2, MaxRank = 8, Ilvl = 652, MaxIlvl = 671},
+    ["11987"] = {Track = "Hero", Rank = 3, MaxRank = 8, Ilvl = 655, MaxIlvl = 671},
+    ["11988"] = {Track = "Hero", Rank = 4, MaxRank = 8, Ilvl = 658, MaxIlvl = 671},
+    ["11989"] = {Track = "Hero", Rank = 5, MaxRank = 8, Ilvl = 662, MaxIlvl = 671},
+    ["11990"] = {Track = "Hero", Rank = 6, MaxRank = 8, Ilvl = 665, MaxIlvl = 671},
+    ["12371"] = {Track = "Hero", Rank = 7, MaxRank = 8, Ilvl = 668, MaxIlvl = 671},
+    ["12372"] = {Track = "Hero", Rank = 8, MaxRank = 8, Ilvl = 671, MaxIlvl = 671},
 
-    ["11991"] = {Track = "Myth", Rank = 1, MaxRank = 6, Ilvl = 662, MaxIlvl = 678},
-    ["11992"] = {Track = "Myth", Rank = 2, MaxRank = 6, Ilvl = 665, MaxIlvl = 678},
-    ["11993"] = {Track = "Myth", Rank = 3, MaxRank = 6, Ilvl = 668, MaxIlvl = 678},
-    ["11994"] = {Track = "Myth", Rank = 4, MaxRank = 6, Ilvl = 672, MaxIlvl = 678},
-    ["11995"] = {Track = "Myth", Rank = 5, MaxRank = 6, Ilvl = 675, MaxIlvl = 678},
-    ["11996"] = {Track = "Myth", Rank = 6, MaxRank = 6, Ilvl = 678, MaxIlvl = 678},
+    ["11991"] = {Track = "Myth", Rank = 1, MaxRank = 8, Ilvl = 662, MaxIlvl = 684},
+    ["11992"] = {Track = "Myth", Rank = 2, MaxRank = 8, Ilvl = 665, MaxIlvl = 684},
+    ["11993"] = {Track = "Myth", Rank = 3, MaxRank = 8, Ilvl = 668, MaxIlvl = 684},
+    ["11994"] = {Track = "Myth", Rank = 4, MaxRank = 8, Ilvl = 671, MaxIlvl = 684},
+    ["11995"] = {Track = "Myth", Rank = 5, MaxRank = 8, Ilvl = 675, MaxIlvl = 684},
+    ["11996"] = {Track = "Myth", Rank = 6, MaxRank = 8, Ilvl = 678, MaxIlvl = 684},
+    ["12375"] = {Track = "Myth", Rank = 7, MaxRank = 8, Ilvl = 681, MaxIlvl = 684},
+    ["12376"] = {Track = "Myth", Rank = 8, MaxRank = 8, Ilvl = 684, MaxIlvl = 684},
 
     -- Season 24
     ["10256"] = {Track = "Hero", Rank = 6, MaxRank = 6, Ilvl = 626, MaxIlvl = 626},
