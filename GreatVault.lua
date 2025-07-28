@@ -141,6 +141,17 @@ GreatVault.AddKeystoneHistory = function(tooltip)
 	end
 end
 
+GreatVault.AddDelveHistory = function(tooltip, rewardTable)
+	local delveCount = 0;
+	for Tier, TierTable in ipairs(rewardTable) do
+		--PrintTable (TierTable)
+		if  TierTable and (TierTable.level >= 8) then
+			delveCount = TierTable.progress
+		end
+	end
+	tooltip:AddLine(string.format("Tier 8+ Delves: %d", delveCount), 1, 1, 1);
+end
+
 GreatVault.OnTooltipShow = function(tooltip)
 	tooltip:AddLine("Great Vault")
 	tooltip:AddLine(" ");
@@ -160,6 +171,7 @@ GreatVault.OnTooltipShow = function(tooltip)
 	if (#World > 0) then
 		tooltip:AddLine("World")
 		GreatVault.AddGvLines(tooltip, World);
+		GreatVault.AddDelveHistory(tooltip, World);
 		tooltip:AddLine(" ");
 	end
 

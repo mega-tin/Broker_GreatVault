@@ -1,5 +1,8 @@
+from urllib.request import Request, urlopen
 import json
 import math
+
+URL = r'https://www.raidbots.com/static/data/xptr/bonuses.json'
 
 class UpgradeTrack:
     def __init__ (self, name, season):
@@ -22,11 +25,15 @@ def has_track(tracks, name, season):
             return True
     return False
 
-def parse_bonus():
-    #Read json
-    with open('bonuses.json', 'r') as f:
-        data = json.load(f)
+def get_json(url):
+    req = Request(url=URL, headers={'User-Agent': 'Mozilla/5.0'})
+    return urlopen(req).read()
 
+def parse_bonus(str):
+    #Read json
+    #with open('bonuses.json', 'r') as f:
+    #    data = json.load(f)
+    data = json.loads(str)
     #Find all the item upgrade info
     #For now, a bonus with an upgrade and a seasonid tag seem to do it.
     upgrade_ids = [id for id in data if "upgrade" in data[id] and "seasonId" in data[id]["upgrade"]]
@@ -67,4 +74,5 @@ def parse_bonus():
     print('}')
 
 if __name__ == "__main__":
-    parse_bonus()
+    str = get_json(URL)
+    parse_bonus(str)
