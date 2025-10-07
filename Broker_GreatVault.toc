@@ -1,8 +1,8 @@
-## Interface: 110200
+## Interface: 110205
 ## Title: Broker GreatVault
 ## Notes:  A simple data broker display for current Great Vault rewards
 ## Author: Megatin
-## Version: 1.7
+## Version: 1.8
 ## OptionalDeps: LibDataBroker-1.1
 
 

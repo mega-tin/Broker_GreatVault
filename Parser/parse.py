@@ -2,7 +2,7 @@ from urllib.request import Request, urlopen
 import json
 import math
 
-URL = r'https://www.raidbots.com/static/data/xptr/bonuses.json'
+URL = r'https://www.raidbots.com/static/data/ptr/bonuses.json'
 
 class UpgradeTrack:
     def __init__ (self, name, season):
